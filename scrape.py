@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(description='weather scraping module')
 parser.add_argument('--target_dir', default='test', help='where to save files')
 args = parser.parse_args()
 
-os.makedirs(args.target_dir)
+os.makedirs(args.target_dir, exist_ok=True)
 logging.basicConfig(filename=os.path.join(args.target_dir, 'meteoscraping.log'),
                     level=logging.INFO, filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
