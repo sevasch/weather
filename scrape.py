@@ -34,7 +34,7 @@ def write_file(data, subdir, filename):
 if __name__ == '__main__':
     attempttime = str(datetime.datetime.now())  # get current time
 
-    # BODENDRUCKKARTE (every 6h)
+    # WEATHER CHARTS (every 6h)
     url = 'http://www.hossi-im-netz.de/wordpress/vorhersage/bodendruckkarte/'
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')  # get
 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
     except:
         logging.warning('scraping of SWC failed')
 
-    # WINDKARTEN (taeglich)
+    # WIND CHARTS (daily)
     names = ['Wind_FL050', 'Wind_FL100', 'Wind_FL140', 'Wind_FL180', 'Wind_FL240', 'Wind_FL300']
     urls = ['https://maercu.ch/aviation/imageDisplay/imageDisplay.php?content=windTmpFL050&nr=0',
             'https://maercu.ch/aviation/imageDisplay/imageDisplay.php?content=windTmpFL100&nr=0',
@@ -114,7 +114,7 @@ if __name__ == '__main__':
             logging.warning('scraping of ' + name + ' failed')
 
 
-    # METAR / TAF
+    # METAR / TAF (every 1h)
     hours = str(attempttime[11:13])
     if len(hours) < 2:
         hours = '0' + hours
@@ -133,7 +133,7 @@ if __name__ == '__main__':
         logging.warning('scraping of METAR and TAF failed')
 
 
-    # EMAGRAMM (alle 12h) 6930
+    # EMAGRAMM (every 12h)
     current_day = int(attempttime[8:10])
     if int(attempttime[11:13]) < 12:
         hour = '12'
@@ -159,7 +159,7 @@ if __name__ == '__main__':
         logging.warning('scraping of Emagramm failed')
 
 
-    # SAT IR & VIS (alle 1h)
+    # SAT IR (every 1h)
     url = 'https://www.wetterdienst.de/Europawetter/Satellitenbilder/Infrarot/'
     r = requests.get(url) # open webpage
     soup = BeautifulSoup(r.content, features='html.parser') # get
