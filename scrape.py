@@ -38,10 +38,11 @@ if __name__ == '__main__':
     url = 'http://www.hossi-im-netz.de/wordpress/vorhersage/bodendruckkarte/'
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')  # get
 
-    hours = str(np.floor(int(attempttime[11:13])/6).astype(int)*6)  # round hours down to last 6
+    hours6ago = str(datetime.datetime.now() - datetime.timedelta(hours=6))
+    hours = str(np.floor(int(hours6ago[11:13])/6).astype(int)*6)  # round hours down to last 6
     if len(hours) < 2:
         hours = '0' + hours
-    timestamp = attempttime[0:4] + attempttime[5:7] + attempttime[8:10] + '_' + hours + '00'
+    timestamp = hours6ago[0:4] + hours6ago[5:7] + hours6ago[8:10] + '_' + hours + '00'
 
     try:
         image_url = soup.find_all('img', {'class': 'alignnone size-full'})[0].get_attribute_list('src')[0]
