@@ -32,13 +32,13 @@ def write_file(data, subdir, filename):
 
 ''' MAIN '''
 if __name__ == '__main__':
-    attempttime = str(datetime.datetime.now())  # get current time
+    attempttime = str(datetime.datetime.utcnow())  # get current time
 
     # WEATHER CHARTS (every 6h)
     url = 'http://www.hossi-im-netz.de/wordpress/vorhersage/bodendruckkarte/'
     soup = BeautifulSoup(requests.get(url).content, features='html.parser')  # get
 
-    hours6ago = str(datetime.datetime.now() - datetime.timedelta(hours=6))
+    hours6ago = str(datetime.datetime.utcnow() - datetime.timedelta(hours=6))
     hours = str(np.floor(int(hours6ago[11:13])/6).astype(int)*6)  # round hours down to last 6
     if len(hours) < 2:
         hours = '0' + hours
