@@ -1,0 +1,3 @@
+* * * * * echo “The test cron ran at $(date)” > /proc/1/fd/1 2>/proc/1/fd/2
+30 * * * * python3 /scripts/scrape.py --target_dir /temp
+0 * * * * bash /scripts/export_data.sh > /proc/1/fd/1 2>/proc/1/fd/2
