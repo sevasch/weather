@@ -1,13 +1,13 @@
 # Weather scraper
-The idea of this project is to collect meteorological data from various sources over long time periods. It is designed to run on devices with low power consumption such as _Raspberry Pi_ but can also be run on any other system as docker container. 
+The idea of this project is to collect meteorological data from various sources over long periods of time. It is designed to run on devices with low power consumption such as _Raspberry Pi_ but can also be run on any other system as docker container. 
 
-The intent behind collecting a lot of meteorological data was originally to create animations for meteorology lessons during flight training. This project also served as an exercise on Linux, Docker and Pyton. 
+The intent behind collecting a lot of meteorological data was originally to create animations for meteorology lessons during pilot training. This project also served as an exercise on Linux, Docker and Pyton. 
 
 Future changes might include: 
-* Improvements in logging. 
-* Network storage to access data. 
-* Testing and better exception handling. 
-* Making the Python code more readable and splitting it up. 
+* Improvements in logging
+* Network storage to access data
+* Testing and better exception handling
+* Making the Python code more readable and splitting it up
 
 ## Data overview
 The data is collected from various sources. 
@@ -20,16 +20,6 @@ The data is collected from various sources.
 | TAF                        | 1h       | https://www.meteoschweiz.admin.ch/                                  |
 | emagram Payerne            | 12h      | https://www.meteoschweiz.admin.ch/                                  |
 | wind charts                | 1d       | https://maercu.ch/aviation/                                         |
-
-
-## Options
-<table>
-    <tr>
-        <td>--target_dir</td>
-        <td>All data will be saved to this directory. </td>
-    </tr>
-</table>
-
 
 ## Hardware requirements
 All code was tested on a _Raspberry Pi 2B_. To ensure completeness of the scraped data, I highly recommend permanent power supply and internet connection. It is also a good idea to use a large (10GB+) so the system can run for longer before storage runs out. 
